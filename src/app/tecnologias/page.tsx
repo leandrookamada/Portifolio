@@ -54,29 +54,29 @@ export default function Tecnologia() {
 
     return (
         // 1. CONTAINER CORRIGIDO: Usando padding para espaçamento
-        <div className="py-24 px-4 sm:px-8">
-            <h2 className="text-5xl font-titulo text-center text-white mb-16 tracking-wider">TECNOLOGIAS</h2>
+        <div className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-8">
+            <h1 className="text-5xl font-titulo text-center text-white mb-16 tracking-wider">TECNOLOGIAS</h1>
 
-            <ol className="relative timeline max-w-4xl mx-auto">
+            <ol className="relative  timeline max-w-4xl mx-auto ">
                 {tech.map((e, index) => (
                     // 5. ANIMAÇÃO: Substituímos 'li' por 'motion.li'
                     <motion.li
                         key={e.nome}
-                        className="relative mb-16 flex items-start gap-8"
+                        className="relative mb-20 flex items-start gap-8"
                         initial={{opacity: 0, x: -50}}
                         whileInView={{opacity: 1, x: 0}}
                         viewport={{once: true}}
                         transition={{duration: 0.5, delay: index * 0.1}}
                     >
                         {/* 2. CÍRCULO RECRIADO AQUI */}
-                        <div className="z-10 flex-shrink-0 bg-gray-700 p-2 rounded-full border-2 border-blue-500">
-                            <Image src={`/linguagens/${e.icon}`} alt={`Logo ${e.nome}`} width={45} height={45} />
+                        <div className="z-10 flex-shrink-0 p-6 rounded-full border-2 ">
+                            <Image src={`/linguagens/${e.icon}`} alt={`Logo ${e.nome}`} width={50} height={50} />
                         </div>
 
                         {/* 3. BALÃO DE CONTEÚDO CORRIGIDO */}
-                        <div className="bg-gray-800 bg-opacity-60 backdrop-blur-sm p-6 rounded-lg shadow-lg w-full">
+                        <div className=" bg-opacity-60  p-6 rounded-lg shadow-lg w-full">
                             {/* 4. FONTES APLICADAS */}
-                            <h3 className="font-titulo text-3xl font-semibold text-blue-400 tracking-wide">{e.nome}</h3>
+                            <h3 className="font-subtitulo font-semibold text-3xl md:text-5xl lg:text-7xl">{e.nome}</h3>
                             <p className="mt-3 font-subtitulo text-gray-300 text-lg">{e.description}</p>
                         </div>
                     </motion.li>

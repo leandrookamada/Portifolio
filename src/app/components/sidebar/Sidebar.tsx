@@ -4,7 +4,7 @@ import {House, User, Cpu, FolderGit2} from "lucide-react";
 
 export default function SideBar() {
     return (
-        <header className="flex gap-10 min-h-screen w-110 flex-col fixed left-0 right-0 items-center justify-center p-24 bg-gray-800 shadow-xl">
+        <aside className="flex flex-col gap-10 h-screen w-72 fixed top-0 left-0 items-center justify-center p-8 bg-gray-800 shadow-xl">
             <div className="overflow-hidden rounded-full w-[150px] h-[150px]">
                 <Image
                     src="/image/perfil.jpeg"
@@ -35,6 +35,6 @@ export default function SideBar() {
                     <h1>Projetos</h1>
                 </Link>
             </nav>
-        </header>
+        </aside>
     );
 }

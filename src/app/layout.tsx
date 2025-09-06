@@ -22,13 +22,15 @@ export default function RootLayout({
     return (
         <html lang="pt-br">
             <body className={`${titulo.variable} ${subttitulo.variable} antialiased`}>
-                <SideBar />
-                <main
-                    className="ml-72 min-h-screen bg-no-repeat bg-cover bg-center "
-                    style={{backgroundImage: `url('${imageUrl}')`}}
-                >
-                    {children}
-                </main>
+                <div className="flex flex-col">
+                    <SideBar />
+                    <main
+                        className="ml-72 min-h-screen bg-no-repeat bg-cover bg-center "
+                        style={{backgroundImage: `url('${imageUrl}')`}}
+                    >
+                        {children}
+                    </main>
+                </div>
             </body>
         </html>
     );
