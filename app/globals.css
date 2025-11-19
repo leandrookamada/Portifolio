@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+     --color-background: #171717;
+     --color-foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+     @theme {
+          --color-background: #0a0a0a;
+          --color-foreground: #ededed;
+     }
+}
+
+body {
+     color: var(--color-foreground);
+     background: var(--color-background);
+     overflow-x: hidden;
+}
+
+html {
+     overflow-x: hidden;
+}
+
+/* Estilos para o Swiper */
+.swiper {
+     width: 100%;
+     max-width: 100%;
+     box-sizing: border-box;
+}
+
+.swiper-slide {
+     width: auto;
+     box-sizing: border-box;
+}
+
+.swiper-wrapper {
+     box-sizing: border-box;
+}
+
+/* Garante que o conteúdo não vaze para a área do sidebar */
+#projects {
+     max-width: 100%;
+     box-sizing: border-box;
+}
+
+/* Estilos específicos para o swiper de projetos */
+.projects-swiper {
+     margin: 0;
+     padding: 0;
+     width: 100% !important;
+     max-width: 100% !important;
+}
+
+.projects-swiper .swiper-wrapper {
+     width: 100% !important;
+     max-width: 100% !important;
+}
+
+.projects-swiper .swiper-slide {
+     width: auto !important;
+     flex-shrink: 0;
+}
+
+h1 {
+     font-weight: 900;
+     font-size: 2rem;
+}
+
+h2 {
+     font-weight: 700;
+     font-size: 1.75rem;
+}
+
+h3 {
+     font-weight: 400;
+     font-size: 1.5rem;
+}
+
+.timeline::before {
+     content: "";
+     position: absolute;
+     left: 22px;
+     top: 10px;
+     bottom: 10px;
+     width: 3px;
+     background-color: #171717;
+     z-index: 0;
+     border-radius: 1.5px;
+}
