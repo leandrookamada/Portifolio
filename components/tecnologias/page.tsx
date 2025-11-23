@@ -2,10 +2,6 @@
 
 import React, { useState } from "react";
 
-// =================================================================
-// ⭐️ 1. INTERFACES E DADOS (Definidos no próprio componente)
-// =================================================================
-
 interface SkillItem {
      name: string;
      score: number; // 1 a 5
@@ -21,22 +17,22 @@ const skillRadarData: SkillRadarData = {
      "Frontend Core": [
           {
                name: "React/Next.js",
-               score: 5,
-               level: "Master",
+               score: 4,
+               level: "Avançado",
                description:
                     "Desenvolvimento de aplicações escaláveis, Hooks, padrões de componentes.",
           },
           {
                name: "TypeScript",
-               score: 4,
-               level: "Avançado",
+               score: 3,
+               level: "Intermediário",
                description:
                     "Tipagem forte para código seguro e manutenção de projetos grandes.",
           },
           {
                name: "HTML/CSS/SASS",
-               score: 4,
-               level: "Avançado",
+               score: 5,
+               level: "Master",
                description:
                     "Base sólida em responsividade, performance e pré-processadores CSS.",
           },
@@ -50,7 +46,7 @@ const skillRadarData: SkillRadarData = {
           },
           {
                name: "C / C++",
-               score: 5,
+               score: 4,
                level: "Sólido (Fundamentos)",
                description:
                     "Base lógica e estrutural inegável para entender algoritmos.",
@@ -88,15 +84,9 @@ const skillRadarData: SkillRadarData = {
      ],
 };
 
-// ⭐️ Cor de destaque que definimos para o estado ativo
 const ACCENT_COLOR = "#3B82F6";
 
-// =================================================================
-// ⭐️ 2. COMPONENTE RADAR
-// =================================================================
-
 export default function SkillRadar() {
-     // ➡️ Estado para rastrear a skill que o usuário está olhando
      const [activeSkill, setActiveSkill] = useState<SkillItem | null>(null);
 
      return (
@@ -119,11 +109,9 @@ export default function SkillRadar() {
                                              <div
                                                   key={skill.name}
                                                   className="cursor-pointer"
-                                                  // ⭐️ O evento 'onMouseEnter' deve atualizar o estado 'activeSkill'
                                                   onMouseEnter={() =>
                                                        setActiveSkill(skill)
                                                   }
-                                                  // ⭐️ O evento 'onMouseLeave' deve limpar o estado
                                                   onMouseLeave={() =>
                                                        setActiveSkill(null)
                                                   }
@@ -139,7 +127,6 @@ export default function SkillRadar() {
                                                        </span>
                                                   </div>
 
-                                                  {/* ⭐️ BARRA DE PROFICIÊNCIA VISUAL */}
                                                   <div className="w-full bg-gray-700 rounded-full h-2">
                                                        <div
                                                             className="h-2 rounded-full transition-all duration-500"

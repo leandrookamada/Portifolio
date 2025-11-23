@@ -47,7 +47,7 @@ export default function ProjetosCarousel() {
                          PROJETOS
                     </h2>
 
-                    <div style={{ height: "40em", position: "static" }}>
+                    <div style={{ height: "60em", position: "static" }}>
                          <Carousel
                               baseWidth={800}
                               autoplay={true}
@@ -57,55 +57,6 @@ export default function ProjetosCarousel() {
                               round={false}
                          />
                     </div>
-                    {/*<div className="relative max-w-full">
-                         <Swiper
-                              // Módulos que vamos usar
-                              modules={[Autoplay, Pagination]}
-                              // Configurações do Carrossel
-                              spaceBetween={20} // Reduzido o espaço entre slides
-                              slidesPerView={2.5} // Ajustado para mostrar 2.5 slides por vez
-                              centeredSlides={false} // Centraliza os slides
-                              loop={true} // Habilita o loop infinito
-                              autoplay={{
-                                   delay: 2500, // Tempo em ms para trocar de slide
-                                   disableOnInteraction: false, // Continua o autoplay mesmo após interação do usuário
-                              }}
-                              pagination={{
-                                   clickable: true, // Permite clicar nas bolinhas de paginação
-                              }}
-                              breakpoints={{
-                                   // Quando a tela for menor que 640px
-                                   320: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 15,
-                                   },
-                                   // Quando a tela for maior ou igual a 768px
-                                   768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 20,
-                                   },
-                                   // Quando a tela for maior ou igual a 1024px
-                                   1024: {
-                                        slidesPerView: 2.5,
-                                        spaceBetween: 20,
-                                   },
-                              }}
-                              className="projects-swiper w-full pb-12" // Classe específica para este swiper
-                         >
-                              {projetos.map((projeto, index) => (
-                                   <SwiperSlide key={index}>
-                                        <div className="bg-gray-800 border border-gray-700 rounded-lg p-6 h-64 flex flex-col justify-center items-center text-center">
-                                             <h3 className="text-2xl font-bold text-white mb-2">
-                                                  {projeto.nome}
-                                             </h3>
-                                             <p className="text-gray-400">
-                                                  {projeto.descricao}
-                                             </p>
-                                        </div>
-                                   </SwiperSlide>
-                              ))}
-                         </Swiper>
-                    </div>*/}
                </div>
           </section>
      );
