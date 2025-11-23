@@ -1,92 +1,199 @@
 "use client";
 
-import React from "react";
-// Não precisamos mais do 'Image' do Next.js para os ícones
-// import Image from "next/image";
-import {motion} from "framer-motion";
+import React, { useState } from "react";
 
-// Passo 1: Importar o CSS do Devicon
-// (Lembre-se de instalar com 'npm install devicon' ou 'yarn add devicon')
-import "devicon/devicon.min.css";
+// =================================================================
+// ⭐️ 1. INTERFACES E DADOS (Definidos no próprio componente)
+// =================================================================
 
-export default function Tecnologia() {
-    // Passo 2: Atualizar a lista com as classes do Devicon
-    // Em vez do nome do arquivo, usamos a classe CSS correspondente.
-    const tech = [
-        {
-            nome: "HTML5",
-            icon: "devicon-html5-plain-wordmark colored", // Adicionei 'colored' para manter a cor
-            description: "Linguagem de marcação para estruturar páginas web e seus conteúdos.",
-        },
-        {
-            nome: "CSS3",
-            icon: "devicon-css3-plain-wordmark colored",
-            description:
-                "Linguagem de estilização usada para descrever a apresentação de um documento escrito em HTML.",
-        },
-        {
-            nome: "C++",
-            icon: "devicon-cplusplus-plain colored",
-            description: "Linguagem de programação de alto desempenho, ideal para sistemas complexos e jogos.",
-        },
-        {
-            nome: "JavaScript",
-            icon: "devicon-javascript-plain colored",
-            description: "Linguagem de programação que permite implementar itens complexos em páginas web.",
-        },
-        {
-            nome: "Node.js",
-            icon: "devicon-nodejs-plain colored",
-            description:
-                "Ambiente de execução JavaScript no lado do servidor, construindo aplicações de rede escaláveis.",
-        },
-        {
-            nome: "TypeScript",
-            icon: "devicon-typescript-plain colored",
-            description: "Um superset do JavaScript que adiciona tipagem estática opcional ao código.",
-        },
-        {
-            nome: "Tailwind CSS",
-            icon: "devicon-tailwindcss-original colored", // Este já é colorido
-            description: "Framework CSS utility-first para criar rapidamente interfaces de usuário customizadas.",
-        },
-        {
-            nome: "Python",
-            icon: "devicon-python-plain-wordmark colored",
-            description:
-                "Linguagem de alto nível, interpretada, usada para desenvolvimento web, ciência de dados e automação.",
-        },
-    ];
+interface SkillItem {
+     name: string;
+     score: number; // 1 a 5
+     level: string;
+     description: string;
+}
 
-    return (
-        <div className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-8">
-            <h1 className="font-titulo text-5xl text-center drop-shadow-lg mb-16 tracking-wider">TECNOLOGIAS</h1>
+interface SkillRadarData {
+     [category: string]: SkillItem[];
+}
 
-            <ol className="relative timeline max-w-4xl flex flex-col gap-8">
-                {tech.map((e, index) => (
-                    <motion.li
-                        key={e.nome}
-                        className="relative mb-12 flex items-start"
-                        initial={{opacity: 0, x: -50}}
-                        whileInView={{opacity: 1, x: 0}}
-                        viewport={{once: true}}
-                        transition={{duration: 0.5, delay: index * 0.1}}
+const skillRadarData: SkillRadarData = {
+     "Frontend Core": [
+          {
+               name: "React/Next.js",
+               score: 5,
+               level: "Master",
+               description:
+                    "Desenvolvimento de aplicações escaláveis, Hooks, padrões de componentes.",
+          },
+          {
+               name: "TypeScript",
+               score: 4,
+               level: "Avançado",
+               description:
+                    "Tipagem forte para código seguro e manutenção de projetos grandes.",
+          },
+          {
+               name: "HTML/CSS/SASS",
+               score: 4,
+               level: "Avançado",
+               description:
+                    "Base sólida em responsividade, performance e pré-processadores CSS.",
+          },
+     ],
+     "Backend & Lógica": [
+          {
+               name: "Python",
+               score: 3,
+               level: "Intermediário",
+               description: "Foco em APIs, scripts e manipulação de dados.",
+          },
+          {
+               name: "C / C++",
+               score: 5,
+               level: "Sólido (Fundamentos)",
+               description:
+                    "Base lógica e estrutural inegável para entender algoritmos.",
+          },
+          {
+               name: "APIs REST",
+               score: 3,
+               level: "Em Expansão",
+               description:
+                    "Criação e consumo de endpoints, entendendo a arquitetura RESTful.",
+          },
+     ],
+     "Ferramentas & Workflow": [
+          {
+               name: "Git/GitHub",
+               score: 5,
+               level: "Master",
+               description:
+                    "Controle de versão, *branching* e *merge requests* em equipe.",
+          },
+          {
+               name: "Figma",
+               score: 3,
+               level: "Intermediário",
+               description:
+                    "Leitura de designs, prototipação básica e colaboração com UX.",
+          },
+          {
+               name: "Tailwind CSS",
+               score: 4,
+               level: "Avançado",
+               description:
+                    "Desenvolvimento rápido de interfaces com utilitários.",
+          },
+     ],
+};
+
+// ⭐️ Cor de destaque que definimos para o estado ativo
+const ACCENT_COLOR = "#3B82F6";
+
+// =================================================================
+// ⭐️ 2. COMPONENTE RADAR
+// =================================================================
+
+export default function SkillRadar() {
+     // ➡️ Estado para rastrear a skill que o usuário está olhando
+     const [activeSkill, setActiveSkill] = useState<SkillItem | null>(null);
+
+     return (
+          <div className="flex flex-col md:flex-row gap-8 w-full max-w-4xl text-left p-4">
+               {/* 1. MAPA DE HABILIDADES (ESQUERDA) */}
+               <div className="md:w-1/2">
+                    <h3 className="text-xl font-semibold mb-4 text-white">
+                         Mapa de Proficiência
+                    </h3>
+
+                    {Object.entries(skillRadarData).map(
+                         ([category, skills]) => (
+                              <div key={category} className="mb-6">
+                                   <h4 className="text-lg font-medium text-gray-400 mb-2 border-b border-gray-700 pb-1">
+                                        {category}
+                                   </h4>
+
+                                   <div className="space-y-3">
+                                        {skills.map((skill) => (
+                                             <div
+                                                  key={skill.name}
+                                                  className="cursor-pointer"
+                                                  // ⭐️ O evento 'onMouseEnter' deve atualizar o estado 'activeSkill'
+                                                  onMouseEnter={() =>
+                                                       setActiveSkill(skill)
+                                                  }
+                                                  // ⭐️ O evento 'onMouseLeave' deve limpar o estado
+                                                  onMouseLeave={() =>
+                                                       setActiveSkill(null)
+                                                  }
+                                             >
+                                                  <div className="flex justify-between items-center mb-1">
+                                                       <span
+                                                            className={`text-base font-medium ${activeSkill?.name === skill.name ? "text-white" : "text-gray-300"}`}
+                                                       >
+                                                            {skill.name}
+                                                       </span>
+                                                       <span className="text-sm text-gray-500">
+                                                            {skill.level}
+                                                       </span>
+                                                  </div>
+
+                                                  {/* ⭐️ BARRA DE PROFICIÊNCIA VISUAL */}
+                                                  <div className="w-full bg-gray-700 rounded-full h-2">
+                                                       <div
+                                                            className="h-2 rounded-full transition-all duration-500"
+                                                            style={{
+                                                                 width: `${skill.score * 20}%`, // 5/5 = 100%
+                                                                 backgroundColor:
+                                                                      ACCENT_COLOR,
+                                                            }}
+                                                       ></div>
+                                                  </div>
+                                             </div>
+                                        ))}
+                                   </div>
+                              </div>
+                         )
+                    )}
+               </div>
+
+               {/* 2. DETALHE DA HABILIDADE (DIREITA) */}
+               <div className="md:w-1/2 bg-gray-800 p-6 rounded-lg border border-gray-700 self-start sticky top-4">
+                    <h3
+                         className="text-xl font-semibold mb-3"
+                         style={{ color: ACCENT_COLOR }}
                     >
-                        <div className="p-6 rounded-lg flex flex-col md:flex-row items-center md:items-start gap-6 shadow-lg w-full max-w-2xl mx-auto">
-                            {/* Passo 3: Substituir <Image> por <i> */}
-                            {/* Usamos a classe do ícone e definimos um tamanho com 'font-size' */}
-                            <div className="flex justify-center items-center text-5xl">
-                                <i className={e.icon}></i>
-                            </div>
+                         {activeSkill
+                              ? activeSkill.name
+                              : "Passe o mouse para detalhar"}
+                    </h3>
 
-                            <div>
-                                <h3 className="font-titulo text-3xl font-bold">{e.nome}</h3>
-                                <p className="font-subtitulo text-lg">{e.description}</p>
-                            </div>
-                        </div>
-                    </motion.li>
-                ))}
-            </ol>
-        </div>
-    );
+                    {activeSkill ? (
+                         <>
+                              <p className="text-gray-300 mb-4">
+                                   {activeSkill.description}
+                              </p>
+                              <div className="mt-4">
+                                   <span className="text-sm font-bold text-gray-500 mr-2">
+                                        Nível de Domínio:
+                                   </span>
+                                   <span
+                                        className="text-base font-bold"
+                                        style={{ color: ACCENT_COLOR }}
+                                   >
+                                        {activeSkill.level}
+                                   </span>
+                              </div>
+                         </>
+                    ) : (
+                         <p className="text-gray-500">
+                              Esta seção detalha minhas habilidades técnicas.
+                              Interaja com as barras à esquerda para ver o
+                              contexto e o nível de domínio de cada tecnologia.
+                         </p>
+                    )}
+               </div>
+          </div>
+     );
 }

@@ -3,51 +3,82 @@
 import { motion } from "framer-motion";
 import { personalData } from "../../lib/data";
 import { Linkedin, Github, Twitter } from "lucide-react";
+import { useState } from "react";
+
+const portifolioData = [
+     {
+          id: 1,
+          title: "A Base e o Salto para o React",
+          description:
+               "Minha jornada de desenvolvimento começou com a criação de interfaces sólidas usando HTML e CSS. Rapidamente fiz o salto para o React**, onde pude adotar uma abordagem de desenvolvimento baseada em componentes, focando na reusabilidade e na criação de Sites Institucionais dinâmicos e de alta performance.",
+     },
+     {
+          id: 2,
+          title: "Especialização: TypeScript e Next.js",
+          description:
+               "A minha especialização está em construir aplicações front-end escaláveis usando React e Next.js para otimizar o desempenho e a SEO. Escolhi o TypeScript para garantir a robustez e a escalabilidade dos projetos. Ele me permite detectar erros em tempo de desenvolvimento, tornando o código mais seguro e facilitando a manutenção em equipe.",
+     },
+     // ⭐️ NOVA ABA (ID 3): Foco em ferramentas, metodologias e tecnologias principais
+     {
+          id: 3,
+          title: "Ferramentas e Stack Principal",
+          description:
+               "No Front-end, utilizo principalmente React, Next.js e TypeScript. Para design e prototipação, tenho familiaridade com o Figma. No fluxo de trabalho, aplico o controle de versão com Git/GitHub e busco me adequar às práticas de desenvolvimento ágil.",
+     },
+     {
+          id: 4,
+          title: "Desenvolvimento Backend e Fundamentos",
+          description:
+               "Busco aprofundamento na área de Backend. Comecei com C, o que me deu uma base sólida em lógica. Atualmente, foco em Python para desenvolvimento de projetos, mantendo o C++ para estudos. Sou motivado a explorar a criação de APIs REST e sistemas de gerenciamento de dados.",
+     },
+     {
+          id: 5,
+          title: "Soft Skills e Próximos Passos",
+          description:
+               "Sou uma pessoa com fácil comunicação e aprendizado rápido. Minha motivação é o desenvolvimento contínuo por meio de estudos e vivência prática. Meu objetivo profissional é migrar integralmente para o Backend, buscando oportunidades na área de Dados ou como Desenvolvedor Backend.",
+     },
+];
 
 export default function About() {
+     const [activeTab, setActiveTab] = useState(portifolioData[0].id);
+     const handlerTabItem = (id: number) => {
+          setActiveTab(id);
+     };
+     const activeItem = portifolioData.find((item) => item.id === activeTab);
      return (
           <section
                id="about"
                className="min-h-screen flex flex-col justify-center items-center  text-center py-20"
           >
-               <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="max-w-3xl flex flex-col gap-4"
-               >
-                    <h2 className="text-4xl font-bold mb-8">Sobre Mim</h2>
-                    <p className="text-lg text-gray-300 mb-8 ">
-                         {personalData.description}
-                    </p>
-                    <div className="flex justify-center gap-8">
-                         <a
-                              href={personalData.socialLinks.linkedin}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-white transition-colors duration-300"
-                         >
-                              <Linkedin size={32} />
-                         </a>
-                         <a
-                              href={personalData.socialLinks.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-white transition-colors duration-300"
-                         >
-                              <Github size={32} />
-                         </a>
-                         <a
-                              href={personalData.socialLinks.twitter}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-white transition-colors duration-300"
-                         >
-                              <Twitter size={32} />
-                         </a>
+               {" "}
+               <section className="w-full max-w-6xl mx-auto h-full min-h-[15em] shadow-2xl shadow-gray-900 bg-gray-900 rounded-xl overflow-hidden">
+                    {/* ARÉA DE TÍTULOS */}
+                    <div className="flex gap-2 bg-azul justify-center items-center rounded-t-2xl  border-white ">
+                         {portifolioData.map((item) => (
+                              <button
+                                   key={item.id}
+                                   onClick={() => handlerTabItem(item.id)}
+                                   className="hover:bg-azulMedio p-3"
+                              >
+                                   {item.title}
+                              </button>
+                         ))}
                     </div>
-               </motion.div>
+                    {/* ARÉA DE DESCRIÇÃO */}
+                    <div className="flex justify-center items-center ">
+                         {activeItem && (
+                              <motion.p
+                                   key={activeItem.id}
+                                   initial={{ opacity: 0, y: 10 }}
+                                   animate={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.3 }}
+                                   className="text-lg text-gray-300 whitespace-pre-wrap p-4"
+                              >
+                                   {activeItem.description}
+                              </motion.p>
+                         )}
+                    </div>
+               </section>
           </section>
      );
 }

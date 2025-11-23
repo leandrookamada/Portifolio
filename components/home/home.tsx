@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { personalData } from "../../lib/data";
 import TextType from "../blocks/TextAnimations/TextType/TextType";
+import { BackgroundRippleEffect } from "../ui/background-ripple-effect";
 
 export default function Home() {
      return (
@@ -10,6 +11,8 @@ export default function Home() {
                id="home"
                className="min-h-screen flex flex-col justify-center items-center text-center"
           >
+               {/* <BackgroundRippleEffect /> */}
+
                <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
