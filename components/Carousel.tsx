@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion, PanInfo, useMotionValue, useTransform } from "motion/react";
+import { motion, PanInfo, useMotionValue } from "motion/react";
 import React, { JSX } from "react";
-import Image from "next/image";
 
 // replace icons with your own if needed
 import {
@@ -275,15 +274,6 @@ export default function Carousel({
                     onAnimationComplete={handleAnimationComplete}
                >
                     {carouselItems.map((item, index) => {
-                         const range = [
-                              -(index + 1) * trackItemOffset,
-                              -index * trackItemOffset,
-                              -(index - 1) * trackItemOffset,
-                         ];
-                         const outputRange = [90, 0, -90];
-                         const rotateY = useTransform(x, range, outputRange, {
-                              clamp: false,
-                         });
                          const handleVisitClick = (e: React.MouseEvent) => {
                               e.stopPropagation();
                               if (item.url) {
@@ -306,7 +296,6 @@ export default function Carousel({
                                    style={{
                                         width: itemWidth,
                                         height: "",
-                                        rotateY: rotateY,
                                         ...(round && { borderRadius: "50%" }),
                                    }}
                                    transition={effectiveTransition}
