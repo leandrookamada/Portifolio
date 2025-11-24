@@ -48,31 +48,34 @@ export default function About() {
      return (
           <section
                id="about"
-               className="min-h-screen flex flex-col justify-center items-center  text-center py-20"
+               className="min-h-screen flex flex-col justify-center items-center text-center py-10 px-2 sm:px-4"
           >
-               {" "}
-               <section className="w-full max-w-6xl mx-auto h-full min-h-[15em] shadow-2xl shadow-gray-900 bg-gray-900 rounded-xl overflow-hidden">
+               <section className="w-full max-w-full sm:max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto h-full min-h-[15em] shadow-2xl shadow-gray-900 bg-gray-900 rounded-xl overflow-hidden">
                     {/* ARÉA DE TÍTULOS */}
-                    <div className="flex gap-2 bg-azul justify-center items-center rounded-t-2xl  border-white ">
+                    <div className="flex flex-wrap gap-2 bg-azul justify-center items-center rounded-t-2xl border-white px-2 sm:px-4 py-2">
                          {portifolioData.map((item) => (
                               <button
                                    key={item.id}
                                    onClick={() => handlerTabItem(item.id)}
-                                   className="hover:bg-azulMedio p-3"
+                                   className="hover:bg-azulMedio p-2 sm:p-3 text-xs sm:text-base rounded transition-colors"
+                                   style={{
+                                        minWidth: "120px",
+                                        wordBreak: "break-word",
+                                   }}
                               >
                                    {item.title}
                               </button>
                          ))}
                     </div>
                     {/* ARÉA DE DESCRIÇÃO */}
-                    <div className="flex justify-center items-center ">
+                    <div className="flex justify-center items-center px-2 sm:px-6 py-4">
                          {activeItem && (
                               <motion.p
                                    key={activeItem.id}
                                    initial={{ opacity: 0, y: 10 }}
                                    animate={{ opacity: 1, y: 0 }}
                                    transition={{ duration: 0.3 }}
-                                   className="text-lg text-gray-300 whitespace-pre-wrap p-4"
+                                   className="text-base sm:text-lg text-gray-300 whitespace-pre-wrap text-left sm:text-center"
                               >
                                    {activeItem.description}
                               </motion.p>

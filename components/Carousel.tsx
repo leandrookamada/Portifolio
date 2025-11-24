@@ -95,7 +95,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
           \n<b>Backend/Lógica:</b> O backend está em fase de implementação, onde sou responsável pela arquitetura de processamento e análise dos dados em Python, garantindo a precisão das previsões e a entrega de métricas como Média de Gols e Taxa de Acerto.`,
           id: 4,
           icon: <FiLayers className="h-4 w-4 text-white" />,
-          url: "https://seu-site-3.com",
+          url: "https://github.com/leandrookamada/footy-metrics-lab",
           image: "/image/analise.png",
           technologies: [
                "React",
@@ -117,7 +117,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
           <b>Funções Adicionais:</b> O aplicativo oferece módulos avançados, como análise de desenvolvimento pessoal, recursos de gamificação e a capacidade de criação de grupos de amigos para motivar o processo e acompanhar o progresso.`,
           id: 5,
           icon: <FiCircle className="h-4 w-4 text-white" />,
-          url: "https://seu-site-5.com",
+          url: "https://github.com/leandrookamada/AppFitMind",
           image: "/image/saude.png",
           technologies: [
                "React",
@@ -143,8 +143,21 @@ export default function Carousel({
      loop = false,
      round = false,
 }: CarouselProps): JSX.Element {
-     const containerPadding = 16;
-     const itemWidth = baseWidth - containerPadding * 2;
+     // Responsividade: detecta se está em mobile
+     const [isMobile, setIsMobile] = useState(false);
+     useEffect(() => {
+          const checkMobile = () => {
+               setIsMobile(window.innerWidth <= 768);
+          };
+          checkMobile();
+          window.addEventListener("resize", checkMobile);
+          return () => window.removeEventListener("resize", checkMobile);
+     }, []);
+
+     const containerPadding = isMobile ? 0 : 16;
+     const itemWidth = isMobile
+          ? window.innerWidth
+          : baseWidth - containerPadding * 2;
      const trackItemOffset = itemWidth + GAP;
 
      const carouselItems = loop ? [...items, items[0]] : items;
@@ -245,15 +258,20 @@ export default function Carousel({
      return (
           <div
                ref={containerRef}
-               className={`relative overflow-hidden p-4 ${
+               className={`relative ${isMobile ? "overflow-y-auto" : "overflow-hidden"} ${isMobile ? "p-0" : "p-4"} ${
                     round
                          ? "rounded-full border border-white"
                          : "rounded-3xl border border-[#222]"
                }`}
                style={{
-                    width: `${baseWidth}px`,
-                    ...(round && { height: `${baseWidth}px` }),
-                    height: "100%",
+                    width: isMobile ? "100vw" : `${baseWidth}px`,
+                    minWidth: isMobile ? "100vw" : undefined,
+                    maxWidth: isMobile ? "100vw" : undefined,
+                    ...(round && {
+                         height: isMobile ? "100vw" : `${baseWidth}px`,
+                    }),
+                    height: isMobile ? "100dvh" : "100%",
+                    boxSizing: "border-box",
                }}
           >
                <motion.div
@@ -262,7 +280,8 @@ export default function Carousel({
                     {...dragProps}
                     style={{
                          width: itemWidth,
-                         height: "95%",
+                         minHeight: isMobile ? "100%" : undefined,
+                         height: isMobile ? "auto" : "95%",
                          gap: `${GAP}px`,
                          perspective: 1000,
                          perspectiveOrigin: `${currentIndex * trackItemOffset + itemWidth / 2}px 50%`,
@@ -295,7 +314,16 @@ export default function Carousel({
                                    } overflow-hidden cursor-grab active:cursor-grabbing group`}
                                    style={{
                                         width: itemWidth,
-                                        height: "",
+                                        minWidth: isMobile
+                                             ? "100vw"
+                                             : undefined,
+                                        maxWidth: isMobile
+                                             ? "100vw"
+                                             : undefined,
+                                        minHeight: isMobile
+                                             ? "100%"
+                                             : undefined,
+                                        height: isMobile ? "auto" : "",
                                         ...(round && { borderRadius: "50%" }),
                                    }}
                                    transition={effectiveTransition}

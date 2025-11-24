@@ -5,9 +5,9 @@ export const personalData = {
           "Sou um desenvolvedor apaixonado por criar soluções inovadoras e dar vida a ideias através do código. Tenho experiência em desenvolvimento full-stack, com foco em tecnologias modernas e práticas de desenvolvimento ágil.",
      email: "leandroKamada715@gmail.com",
      socialLinks: {
-          linkedin: "https://linkedin.com/in/seu-usuario",
-          github: "https://github.com/seu-usuario",
-          twitter: "https://twitter.com/seu-usuario",
+          linkedin: "https://www.linkedin.com/in/leandrokamada/",
+          github: "https://github.com/leandrookamada",
+          instagram: "https://www.instagram.com/leandrookamada/",
      },
 };
 
@@ -20,28 +20,4 @@ export const skills = [
      { name: "HTML5", icon: "/linguagens/html5.svg" },
      { name: "CSS3", icon: "/linguagens/css.svg" },
      { name: "Tailwind CSS", icon: "/linguagens/tailwindcss.svg" },
-];
-
-export const projects = [
-     {
-          title: "Projeto 1",
-          description:
-               "Uma breve descrição do seu projeto. Destaque as tecnologias utilizadas e o problema que ele resolve.",
-          image: "/image/placeholder.png", // Substitua por uma imagem do seu projeto
-          link: "#",
-     },
-     {
-          title: "Projeto 2",
-          description:
-               "Uma breve descrição do seu projeto. Destaque as tecnologias utilizadas e o problema que ele resolve.",
-          image: "/image/placeholder.png", // Substitua por uma imagem do seu projeto
-          link: "#",
-     },
-     {
-          title: "Projeto 3",
-          description:
-               "Uma breve descrição do seu projeto. Destaque as tecnologias utilizadas e o problema que ele resolve.",
-          image: "/image/placeholder.png", // Substitua por uma imagem do seu projeto
-          link: "#",
-     },
 ];
