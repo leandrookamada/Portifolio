@@ -7,7 +7,6 @@ import {
      User,
      Code,
      FolderGit2,
-     Mail,
      Github,
      Linkedin,
      Instagram,
@@ -21,7 +20,6 @@ const navLinks = [
      { name: "Sobre", href: "#about", icon: User },
      { name: "Habilidades", href: "#skills", icon: Code },
      { name: "Projetos", href: "#projects", icon: FolderGit2 },
-     { name: "Contato", href: "#contact", icon: Mail },
 ];
 
 const socialLinks = [
