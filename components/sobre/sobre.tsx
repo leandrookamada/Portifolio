@@ -10,7 +10,7 @@ const portifolioData = [
           id: 1,
           title: "A Base e o Salto para o React",
           description:
-               "Minha jornada de desenvolvimento começou com a criação de interfaces sólidas usando HTML e CSS. Rapidamente fiz o salto para o React**, onde pude adotar uma abordagem de desenvolvimento baseada em componentes, focando na reusabilidade e na criação de Sites Institucionais dinâmicos e de alta performance.",
+               "Minha jornada começou no desenvolvimento Web (React/Next.js), o que me deu uma base sólida para entender a arquitetura de aplicações modernas. Hoje, utilizo esse conhecimento para atuar na outra ponta: Segurança da Informação (AppSec) e Automação.\n\nComo estudante de Engenharia da Computação, combino minha habilidade de codificação para criar scripts em Python que automatizam processos manuais e minha visão analítica para desenvolver Dashboards de Gestão, unindo técnica à eficiência operacional.",
      },
      {
           id: 2,
@@ -18,7 +18,6 @@ const portifolioData = [
           description:
                "A minha especialização está em construir aplicações front-end escaláveis usando React e Next.js para otimizar o desempenho e a SEO. Escolhi o TypeScript para garantir a robustez e a escalabilidade dos projetos. Ele me permite detectar erros em tempo de desenvolvimento, tornando o código mais seguro e facilitando a manutenção em equipe.",
      },
-     // ⭐️ NOVA ABA (ID 3): Foco em ferramentas, metodologias e tecnologias principais
      {
           id: 3,
           title: "Ferramentas e Stack Principal",
@@ -27,15 +26,15 @@ const portifolioData = [
      },
      {
           id: 4,
-          title: "Desenvolvimento Backend e Fundamentos",
+          title: "Segurança da Informação (AppSec)",
           description:
-               "Busco aprofundamento na área de Backend. Comecei com C, o que me deu uma base sólida em lógica. Atualmente, foco em Python para desenvolvimento de projetos, mantendo o C++ para estudos. Sou motivado a explorar a criação de APIs REST e sistemas de gerenciamento de dados.",
+               "Meu foco atual está em Segurança de Aplicações (AppSec), onde aplico conhecimentos do OWASP Top 10 para identificar e mitigar vulnerabilidades em aplicações web. Utilizo ferramentas como Burp Suite para testes de segurança, análise de vulnerabilidades e pentesting. Além disso, desenvolvo automações em Python para processos de segurança, criação de scripts para análise de logs e detecção de anomalias, unindo desenvolvimento e segurança ofensiva.",
      },
      {
           id: 5,
-          title: "Soft Skills e Próximos Passos",
+          title: "Objetivo Profissional",
           description:
-               "Sou uma pessoa com fácil comunicação e aprendizado rápido. Minha motivação é o desenvolvimento contínuo por meio de estudos e vivência prática. Meu objetivo profissional é migrar integralmente para o Backend, buscando oportunidades na área de Dados ou como Desenvolvedor Backend.",
+               "Sou uma pessoa com fácil comunicação e aprendizado rápido. Minha motivação é o desenvolvimento contínuo por meio de estudos e vivência prática. Busco oportunidades que integrem Segurança da Informação, Automação e Análise de Dados, onde possa aplicar tanto minha base técnica em desenvolvimento quanto minha paixão por proteger sistemas e otimizar processos através de código.",
      },
 ];
 

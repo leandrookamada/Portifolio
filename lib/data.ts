@@ -1,6 +1,6 @@
 export const personalData = {
      name: "Leandro Kamada",
-     role: "Desenvolvedor Web",
+     role: "Eng. Computação | Dev & Security",
      description:
           "Sou um desenvolvedor apaixonado por criar soluções inovadoras e dar vida a ideias através do código. Tenho experiência em desenvolvimento full-stack, com foco em tecnologias modernas e práticas de desenvolvimento ágil.",
      email: "leandroKamada715@gmail.com",

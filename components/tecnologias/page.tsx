@@ -14,13 +14,43 @@ interface SkillRadarData {
 }
 
 const skillRadarData: SkillRadarData = {
-     "Frontend Core": [
+     "Segurança & Automação": [
           {
-               name: "React/Next.js",
+               name: "Python (Automação/Scripts)",
                score: 4,
                level: "Avançado",
                description:
-                    "Desenvolvimento de aplicações escaláveis, Hooks, padrões de componentes.",
+                    "Desenvolvimento de scripts para automação de processos, manipulação de dados e criação de ferramentas de segurança.",
+          },
+          {
+               name: "SQL / Análise de Dados",
+               score: 3,
+               level: "Intermediário",
+               description:
+                    "Consultas complexas, análise de dados e otimização de queries para dashboards e relatórios.",
+          },
+          {
+               name: "Burp Suite / OWASP Top 10",
+               score: 2,
+               level: "Fundamentos",
+               description:
+                    "Conhecimento das principais vulnerabilidades web e uso de ferramentas para testes de segurança de aplicações.",
+          },
+          {
+               name: "Linux / Bash",
+               score: 3,
+               level: "Intermediário",
+               description:
+                    "Administração de sistemas Linux, automação via shell scripts e troubleshooting de ambientes.",
+          },
+     ],
+     "Web & Visualização de Dados": [
+          {
+               name: "React/Next.js (Dashboards)",
+               score: 4,
+               level: "Avançado",
+               description:
+                    "Desenvolvimento de dashboards interativos e aplicações web escaláveis com foco em visualização de dados.",
           },
           {
                name: "TypeScript",
@@ -30,6 +60,13 @@ const skillRadarData: SkillRadarData = {
                     "Tipagem forte para código seguro e manutenção de projetos grandes.",
           },
           {
+               name: "Power BI / Visualização",
+               score: 3,
+               level: "Intermediário",
+               description:
+                    "Criação de dashboards de gestão e relatórios visuais para análise de dados e tomada de decisões.",
+          },
+          {
                name: "HTML/CSS/SASS",
                score: 5,
                level: "Master",
@@ -37,35 +74,20 @@ const skillRadarData: SkillRadarData = {
                     "Base sólida em responsividade, performance e pré-processadores CSS.",
           },
      ],
-     "Backend & Lógica": [
-          {
-               name: "Python",
-               score: 3,
-               level: "Intermediário",
-               description: "Foco em APIs, scripts e manipulação de dados.",
-          },
-          {
-               name: "C / C++",
-               score: 4,
-               level: "Sólido (Fundamentos)",
-               description:
-                    "Base lógica e estrutural inegável para entender algoritmos.",
-          },
-          {
-               name: "APIs REST",
-               score: 3,
-               level: "Em Expansão",
-               description:
-                    "Criação e consumo de endpoints, entendendo a arquitetura RESTful.",
-          },
-     ],
-     "Ferramentas & Workflow": [
+     Ferramentas: [
           {
                name: "Git/GitHub",
                score: 5,
                level: "Master",
                description:
                     "Controle de versão, *branching* e *merge requests* em equipe.",
+          },
+          {
+               name: "Docker",
+               score: 2,
+               level: "Básico",
+               description:
+                    "Containerização de aplicações e gerenciamento básico de ambientes.",
           },
           {
                name: "Figma",
@@ -141,7 +163,7 @@ export default function SkillRadar() {
                                         ))}
                                    </div>
                               </div>
-                         )
+                         ),
                     )}
                </div>
 
